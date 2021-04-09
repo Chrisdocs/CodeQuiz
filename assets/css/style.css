@@ -15,3 +15,24 @@ header {
     color: white;
     font-size: 20px;
 }
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.div-box {
+    padding: 15%;
+}
+
+.a-btn, .b-btn, .c-btn, .d-btn {
+    background-color: purple;
+    border: 20px solid purple;
+    border-radius: 25%;
+    color: white;
+    font-size: 20px;
+    align-items: ;
+    margin: 5px;
+}
