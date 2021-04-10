@@ -1,7 +1,7 @@
 //create an array which stores questions
 var quizStart = [
     
-    {question: "To select an element in your HTML via JavaScript you would use which method?", answers: { a: "createElement()", b: "querySlector()", c: "getElementById()", d: "appendChild()"}, correctAnswer: "c" },
+    {question: "To select a specific element in your HTML via JavaScript you would use which method?", answers: { a: "createElement()", b: "querySlector()", c: "getElementById()", d: "appendChild()"}, correctAnswer: "c" },
     
     {question: "test1", answers: { a: "one", b: "two", c: "three", d: "four"}, correctAnswer: "a" },
     
@@ -11,6 +11,36 @@ var quizStart = [
     
     {question: "This is a question?", answers: { a: "one", b: "two", c: "three", d: "four"}, correctAnswer: "c" },
 ];
+
+//loop through questions and answers, if "answers" is equal to "corrrectAnswer" return true
+
+
+var currentIndex = 0;
+    
+function answerCheck(userAnswer) {
+    console.log("userAnswer: ", userAnswer);
+    // Crate a variable to hold the currentQuestions Object
+    var currentQuestion = quizStart[currentIndex];
+    var answers = currentQuestion.answers;
+    var correctAnswerKey = currentQuestion.correctAnswer;
+    console.log('answers: ', answers);
+    console.log("correctAnswerKey: ", correctAnswerKey);
+    var correctAnswer = answers[correctAnswerKey];
+    console.log(correctAnswer);
+    //if user answer equals the correct answer then true, if not false
+    if (userAnswer === correctAnswer) {
+        console.log("correct!")
+    } else {
+        console.log("incorrect!");
+    }
+    // for (var i = 0; i < quizStart.length; i++) {
+    //     var answerChosen = quizStart[0].answers[i];
+    //     var correctResponse = quizStart[i].correctAnswer;
+    //     if (answerChosen === correctResponse) {
+    //     console.log("true");
+    // }
+};
+
 
 
 //when the start quiz button is clicked, the current section should be replaced with the first question
@@ -24,17 +54,20 @@ document.getElementById("stbtn").addEventListener("click", function startQuizBut
     var btnDivB = document.createElement("div");
     var btnDivC = document.createElement("div");
     var btnDivD = document.createElement("div");
+
     var titleSection = document.createElement("h1");
     var textSection = document.createElement("p");
+
     var abtn = document.createElement("button")
     var bbtn = document.createElement("button")
     var cbtn = document.createElement("button")
     var dbtn = document.createElement("button")
     
+    //replaced the initial welcome and start button with the DOM html for first question
     divEl.parentNode.replaceChild(titleSection, divEl);
     startEl.remove("homestart");
-    // btnEl.remove("stbtn");
     
+    //HTML DOM structure for questions
     btnEl.appendChild(btnDivA);
     btnEl.appendChild(btnDivB);
     btnEl.appendChild(btnDivC);
@@ -71,26 +104,49 @@ document.getElementById("stbtn").addEventListener("click", function startQuizBut
     textSection.className = "question-text";
     textSection.textContent = "";
 
-    document.getElementById("btn").addEventListener("click", function answerSelection() {
-        console.log("hello");
+    //when each answer button is clicked, the console should return a true or fasle on whether it represents the correct answer, followed by the presentation of the next question
+ 
+    document.getElementById("answerA").addEventListener("click", function clickedA() {
+        console.log("clicked");
+        var htmlElement = document.getElementById('answerA');
+        var testValue = htmlElement.innerText;
+        console.log('testValue: ', testValue);
+        console.log('typeof: ', typeof testValue);
+        answerCheck(testValue);
+    });
+
+    document.getElementById("answerB").addEventListener("click", function clickedB() {
+        console.log("clicked");
+        console.log("clicked");
+        var htmlElement = document.getElementById('answerB');
+        var testValue = htmlElement.innerText;
+        console.log('testValue: ', testValue);
+        console.log('typeof: ', typeof testValue);
+        answerCheck(testValue);
+    });
+
+    document.getElementById("answerC").addEventListener("click", function clickedC() {
+        console.log("clicked");
+        console.log("clicked");
+        var htmlElement = document.getElementById('answerC');
+        var testValue = htmlElement.innerText;
+        console.log('testValue: ', testValue);
+        console.log('typeof: ', typeof testValue);
+        answerCheck(testValue);
+    });
+
+    document.getElementById("answerD").addEventListener("click", function clickedD() {
+        console.log("clicked");
+        console.log("clicked");
+        var htmlElement = document.getElementById('answerD');
+        var testValue = htmlElement.innerText;
+        console.log('testValue: ', testValue);
+        console.log('typeof: ', typeof testValue);
+        answerCheck(testValue);
     });
 });
 
-    
-
-// var questionText = quizStart[0].question;
-// var asnwerbuttons = quizStart[0].answers;
-// var correctResponse = quizStart[0].correctAnswer;
-// if (answerSelection() === correctResponse) {
-//     console.log("correct")
-// }
-//loop through the array of questions when each question is asnwered, replacing the DOM elements with updated values
-// for (var i = 0; i < quizStart.length; i++) {
-// }
-
 //each question should have a time limit of 60 seconds (60,000 ms)
-
-//when a questions answer is selected, it should log a true or false and replace the section with the html for the new question
 
 //each new question should display a boolean value for the previous question at the bottom
 
