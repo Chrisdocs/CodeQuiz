@@ -16,7 +16,7 @@ var quizStart = [
 var timerEl = document.getElementById("countdown");
 var mainEl = document.getElementById("maintimer");
 var timerstart = document.getElementById("homestart");
-var timeLeft = 5;
+var timeLeft = 2;
 
 function countdown() {
     var timeInterval = setInterval(function() {
@@ -36,7 +36,46 @@ function endQuiz() {
     var divSecondary = document.getElementById("divsecondary");
     
     divMain.removeChild(divSecondary);
-    }
+
+    function insert() {
+        var highscoreResults = document.createElement("h3")
+        highscoreResults.className = "high-score-results"
+        highscoreResults.setAttribute("id", "hsresults")
+        highscoreResults.textContent = "You have a score of " + highscoreValue + ".  You can enter your initials below!";
+    
+        var submitForm = document.createElement("form");
+        
+        var enterInitials = document.createElement("input")
+        enterInitials.className = "enter-initials-input";
+        enterInitials.setAttribute("id", "enterinitials");
+        enterInitials.setAttribute("type", "text");
+        // enterInitials.setAttribute("name", "initials");
+    
+        var initialsSubmit = document.createElement("input")
+        initialsSubmit.className = "initial-submit";
+        initialsSubmit.setAttribute("id", "initsubmit");
+        initialsSubmit.setAttribute("type", "submit");
+    
+        var enterIntDiv = document.createElement("div");
+        var submitDiv = document.createElement("div");
+    
+        divMain.appendChild(highscoreResults);
+        divMain.appendChild(submitForm);
+        submitForm.appendChild(enterIntDiv);
+        submitForm.appendChild(submitDiv);
+        enterIntDiv.appendChild(enterInitials);
+        submitDiv.appendChild(initialsSubmit);
+
+        initialsSubmit.addEventListener('click', function(event) {
+            event.preventDefault();
+            var initials = enterInitials.value
+            console.log(initials);
+            localStorage.setItem("initials", (initials));
+        });
+        
+}
+insert();
+}
 
 timerstart.onclick = countdown;
 
