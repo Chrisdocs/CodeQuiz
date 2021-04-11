@@ -16,6 +16,10 @@ var localStorageScores = [
 
 ];
 
+<<<<<<< HEAD
+=======
+//create a function which displays a page containing a list of highscores
+>>>>>>> feature/save-highscore
 var highScoreLink = document.getElementById("highscoreView");
 
 highScoreLink.addEventListener("click", function() {
@@ -78,6 +82,8 @@ function endQuiz() {
         enterIntDiv.appendChild(enterInitials);
         submitDiv.appendChild(initialsSubmit);
 
+
+        //when the user enters thier initials, it is saved along with thier score into and array in localStorage
         var userinitialsSpan = document.querySelector('#enterinitials');
 
         function renderLastRegistered() {
