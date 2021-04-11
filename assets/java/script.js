@@ -14,16 +14,6 @@ var quizStart = [
 
 var localStorageScores = JSON.parse(localStorage.getItem("initials")) || [] ;
 
-
-//create a function which displays a page containing a list of highscores
-// var highScoreLink = document.getElementById("highscoreView");
-
-// highScoreLink.addEventListener("click", function() {
-//     console.log(highScoreLink);
-// })
-    
-
-
 //create a timer which counts down from 60, if timer reaches 0, move to the next question and reward no highscoreValue
 var timerEl = document.getElementById("countdown");
 var mainEl = document.getElementById("maintimer");

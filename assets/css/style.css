@@ -34,6 +34,12 @@ header {
     justify-content: space-evenly;
 }
 
+.score-ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .start-btn {
     background-color: purple;
     border: 20px solid purple;
