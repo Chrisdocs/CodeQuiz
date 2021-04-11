@@ -12,15 +12,15 @@ var quizStart = [
     {question: "what method can you use in your console to check to see what value a variable returns?", answers: { a: "console.()", b: "var.log()", c: "console.log()", d: "log.dir()"}, correctAnswer: "c" },
 ];
 
-var localStorageScores = [
+var localStorageScores = JSON.parse(localStorage.getItem("initials")) || [] ;
 
-];
 
-var highScoreLink = document.getElementById("highscoreView");
+//create a function which displays a page containing a list of highscores
+// var highScoreLink = document.getElementById("highscoreView");
 
-highScoreLink.addEventListener("click", function() {
-    console.log(highScoreLink);
-})
+// highScoreLink.addEventListener("click", function() {
+//     console.log(highScoreLink);
+// })
     
 
 
@@ -78,17 +78,8 @@ function endQuiz() {
         enterIntDiv.appendChild(enterInitials);
         submitDiv.appendChild(initialsSubmit);
 
-        var userinitialsSpan = document.querySelector('#enterinitials');
 
-        function renderLastRegistered() {
-            var initialStore = localStorage.getItem("initials");
-            if (initialStore === null) {
-                return;
-                } else {
-                userinitialsSpan.textContent = initialStore;
-            }
-        }
-
+        //when the user enters thier initials, it is saved along with thier score into and array in localStorage
         initialsSubmit.addEventListener('click', function(event) {
             event.preventDefault();
             var initials = enterInitials.value + ", score = " + highscoreValue;
@@ -96,9 +87,10 @@ function endQuiz() {
             function storeTheScrores() {
             localStorageScores.push((initials));  
             console.log(localStorageScores);  
-            localStorage.setItem("initials", (localStorageScores));
-            localStorage.getItem("initials", (localStorageScores));
-            renderLastRegistered();
+            localStorage.setItem("initials", JSON.stringify(localStorageScores));
+            if(event) {
+                console.log(event);
+            }
         };
         storeTheScrores();  
     });

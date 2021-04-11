@@ -23,6 +23,17 @@ header {
     display: flex;
 }
 
+.user-scores {
+    display: flex;
+    justify-content: center;    
+}
+
+.hsscoretitles {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
 .start-btn {
     background-color: purple;
     border: 20px solid purple;
