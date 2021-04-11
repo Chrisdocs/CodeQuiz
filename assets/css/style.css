@@ -8,12 +8,32 @@ header {
     justify-content:  space-between;
 }
 
+.highscore {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: purple;
+}
+
+.highscore:hover {
+    color: salmon;
+}
+
+.timer {
+    display: flex;
+}
+
 .start-btn {
     background-color: purple;
     border: 20px solid purple;
-    border-radius: 25%;
+    border-radius: 15%;
     color: white;
     font-size: 20px;
+}
+
+.start-btn:hover {
+    background-color: salmon;
+    border: 20px solid salmon
 }
 
 section {
