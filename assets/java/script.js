@@ -12,8 +12,33 @@ var quizStart = [
     {question: "This is a question?", answers: { a: "one", b: "two", c: "three", d: "four"}, correctAnswer: "c" },
 ];
 
-//loop through questions and answers, if "answers" is equal to "corrrectAnswer" return true
+//create a timer which counts down from 60, if timer reaches 0, move to the next question and reward no highscoreValue
+var timerEl = document.getElementById("countdown");
+var mainEl = document.getElementById("maintimer");
+var timerstart = document.getElementById("homestart");
+var timeLeft = 5;
 
+function countdown() {
+    var timeInterval = setInterval(function() {
+        timerEl.textContent = timeLeft;
+        timeLeft--;
+        if(timeLeft < 0) {
+            timeLeft++;
+            clearInterval(timeInterval);
+            console.log("game over!");
+            endQuiz();
+        }
+    }, 1000);
+}
+
+function endQuiz() {
+    var divMain = document.getElementById("maindiv");
+    var divSecondary = document.getElementById("divsecondary");
+    
+    divMain.removeChild(divSecondary);
+    }
+
+timerstart.onclick = countdown;
 
 var currentIndex = 0;
 var highscoreValue = 0;
@@ -173,52 +198,13 @@ document.getElementById("stbtn").addEventListener("click", function startQuizBut
     var divMain = document.getElementById("maindiv");
     var divBox = document.getElementById("divbox");
 
-    divMain.removeChild(divBox);
-
+    divMain.removeChild(divBox);    
+    
     startQuestionsButton();
-    
-    //replaced the initial welcome and start button with the DOM html for first question
-    
-    //HTML DOM structure for questions
-    // btnEl.appendChild(btnDivA);
-    // btnEl.appendChild(btnDivB);
-    // btnEl.appendChild(btnDivC);
-    // btnEl.appendChild(btnDivD);
-    
-    // btnDivA.appendChild(abtn);
-    // btnDivA.className = "questions-buttons-a";
-    // btnDivB.appendChild(bbtn);
-    // btnDivB.className = "questions-buttons-b";
-    // btnDivC.appendChild(cbtn);
-    // btnDivC.className = "questions-buttons-c";
-    // btnDivD.appendChild(dbtn);
-    // btnDivD.className = "questions-buttons-d";
-    
-    // abtn.className = "a-btn";
-    // abtn.textContent = quizStart[currentIndex].answers.a;
-    // abtn.setAttribute("id", "answerA");
-    
-    // bbtn.className = "b-btn";
-    // bbtn.textContent = quizStart[currentIndex].answers.b;
-    // bbtn.setAttribute("id", "answerB");
-    
-    // cbtn.className = "c-btn";
-    // cbtn.textContent = quizStart[currentIndex].answers.c;
-    // cbtn.setAttribute("id", "answerC");
-    
-    // dbtn.className = "d-btn";
-    // dbtn.textContent = quizStart[currentIndex].answers.d;
-    // dbtn.setAttribute("id", "answerD");
-    
-    // titleSection.className = "h1-box";
-    // titleSection.textContent = quizStart[currentIndex].question;
-    
-    // textSection.className = "question-text";
-    // textSection.textContent = "";
-
-
 });
 
+
+    
 //each question should have a time limit of 60 seconds (60,000 ms)
 
 //each new question should display a boolean value for the previous question at the bottom
