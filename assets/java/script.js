@@ -14,21 +14,11 @@ var quizStart = [
 
 var localStorageScores = JSON.parse(localStorage.getItem("initials")) || [] ;
 
-
-//create a function which displays a page containing a list of highscores
-// var highScoreLink = document.getElementById("highscoreView");
-
-// highScoreLink.addEventListener("click", function() {
-//     console.log(highScoreLink);
-// })
-    
-
-
 //create a timer which counts down from 60, if timer reaches 0, move to the next question and reward no highscoreValue
 var timerEl = document.getElementById("countdown");
 var mainEl = document.getElementById("maintimer");
 var timerstart = document.getElementById("homestart");
-var timeLeft = 2;
+var timeLeft = 30;
 
 function countdown() {
     var timeInterval = setInterval(function() {
@@ -78,13 +68,12 @@ function endQuiz() {
         enterIntDiv.appendChild(enterInitials);
         submitDiv.appendChild(initialsSubmit);
 
-
         //when the user enters thier initials, it is saved along with thier score into and array in localStorage
-        initialsSubmit.addEventListener('click', function(event) {
+        initialsSubmit.addEventListener('click', function savedArrayValues(event) {
             event.preventDefault();
             var initials = enterInitials.value + ", score = " + highscoreValue;
-    
-            function storeTheScrores() {
+
+            function storeTheScores() {
             localStorageScores.push((initials));  
             console.log(localStorageScores);  
             localStorage.setItem("initials", JSON.stringify(localStorageScores));
@@ -92,7 +81,7 @@ function endQuiz() {
                 console.log(event);
             }
         };
-        storeTheScrores();  
+        storeTheScores();  
     });
 }
 insert();
@@ -104,31 +93,22 @@ var currentIndex = 0;
 var highscoreValue = 0;
     
 function answerCheck(userAnswer) {
-    console.log("userAnswer: ", userAnswer);
     // Crate a variable to hold the currentQuestions Object
     var currentQuestion = quizStart[currentIndex];
     var answers = currentQuestion.answers;
     var correctAnswerKey = currentQuestion.correctAnswer;
-    console.log('answers: ', answers);
-    console.log("correctAnswerKey: ", correctAnswerKey);
     var correctAnswer = answers[correctAnswerKey];
-    console.log(correctAnswer);
     //if user answer equals the correct answer then true, if not false
     if (userAnswer === correctAnswer) {
         console.log("correct!")
         highscoreValue++;
         console.log(highscoreValue);
     } else {
+        timeLeft-= 10;
         console.log("incorrect!");
     }
 
     currentIndex++;
-    // for (var i = 0; i < quizStart.length; i++) {
-    //     var answerChosen = quizStart[0].answers[i];
-    //     var correctResponse = quizStart[i].correctAnswer;
-    //     if (answerChosen === correctResponse) {
-    //     console.log("true");
-    // }
 };
 
 function startQuestionsButton() {
@@ -212,42 +192,30 @@ function startQuestionsButton() {
         mainDiv.removeChild(divSecondary);
         startQuestionsButton();
     });
-    
+
     document.getElementById("answerB").addEventListener("click", function clickedB() {
-        console.log("clicked");
-        console.log("clicked");
         var htmlElement = document.getElementById('answerB');
         var testValue = htmlElement.innerText;
-        console.log('testValue: ', testValue);
-        console.log('typeof: ', typeof testValue);
         answerCheck(testValue);
         mainDiv.removeChild(divSecondary);
         startQuestionsButton();
-    });
+    })
     
     document.getElementById("answerC").addEventListener("click", function clickedC() {
-        console.log("clicked");
-        console.log("clicked");
         var htmlElement = document.getElementById('answerC');
         var testValue = htmlElement.innerText;
-        console.log('testValue: ', testValue);
-        console.log('typeof: ', typeof testValue);
         answerCheck(testValue);
         mainDiv.removeChild(divSecondary);
         startQuestionsButton();
-    });
+    })
     
     document.getElementById("answerD").addEventListener("click", function clickedD() {
-        console.log("clicked");
-        console.log("clicked");
         var htmlElement = document.getElementById('answerD');
         var testValue = htmlElement.innerText;
-        console.log('testValue: ', testValue);
-        console.log('typeof: ', typeof testValue);
         answerCheck(testValue);
         mainDiv.removeChild(divSecondary);
         startQuestionsButton();
-    });
+    })
 }
 
 
