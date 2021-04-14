@@ -17,6 +17,7 @@ header {
 
 .highscore:hover {
     color: salmon;
+    transition: all .2s ease-in-out;
 }
 
 .timer {
@@ -55,7 +56,8 @@ header {
 
 .start-btn:hover {
     background-color: salmon;
-    border: 20px solid salmon
+    border: 20px solid salmon;
+    transition: all .2s ease-in-out;
 }
 
 section {
