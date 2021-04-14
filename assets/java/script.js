@@ -1,4 +1,3 @@
-
 //create an array which stores questions
 var quizStart = [
     
@@ -13,13 +12,15 @@ var quizStart = [
     {question: "what method can you use in your console to check to see what value a variable returns?", answers: { a: "console.()", b: "var.log()", c: "console.log()", d: "log.dir()"}, correctAnswer: "c" },
 ];
 
+var currentIndex = 0;
+var highscoreValue = 0;
 var localStorageScores = JSON.parse(localStorage.getItem("initials")) || [] ;
-
-//create a timer which counts down from 60, if timer reaches 0, move to the next question and reward no highscoreValue
 var timerEl = document.getElementById("countdown");
 var mainEl = document.getElementById("maintimer");
 var timerstart = document.getElementById("homestart");
-var timeLeft = 30;
+var timeLeft = 60;
+
+//create a timer which counts down from 60, if timer reaches 0, move to the next question and reward no highscoreValue
 
 function countdown() {
     var timeInterval = setInterval(function() {
@@ -85,13 +86,14 @@ function endQuiz() {
         storeTheScores();  
     });
 }
+if (quizStart[currentIndex] > 5) {
+console.log("end");
+}
 insert();
 }
 
 timerstart.onclick = countdown;
 
-var currentIndex = 0;
-var highscoreValue = 0;
     
 function answerCheck(userAnswer) {
     // Crate a variable to hold the currentQuestions Object
@@ -190,32 +192,48 @@ function startQuestionsButton() {
         console.log('testValue: ', testValue);
         console.log('typeof: ', typeof testValue);
         answerCheck(testValue);
-        mainDiv.removeChild(divSecondary);
-        startQuestionsButton();
+        if (quizStart[currentIndex]) {
+            mainDiv.removeChild(divSecondary);
+            startQuestionsButton();
+            } else {
+                endQuiz();
+            }
     });
 
     document.getElementById("answerB").addEventListener("click", function clickedB() {
         var htmlElement = document.getElementById('answerB');
         var testValue = htmlElement.innerText;
         answerCheck(testValue);
-        mainDiv.removeChild(divSecondary);
-        startQuestionsButton();
+        if (quizStart[currentIndex]) {
+            mainDiv.removeChild(divSecondary);
+            startQuestionsButton();
+            } else {
+                endQuiz();
+            }
     })
     
     document.getElementById("answerC").addEventListener("click", function clickedC() {
         var htmlElement = document.getElementById('answerC');
         var testValue = htmlElement.innerText;
         answerCheck(testValue);
-        mainDiv.removeChild(divSecondary);
-        startQuestionsButton();
+        if (quizStart[currentIndex]) {
+            mainDiv.removeChild(divSecondary);
+            startQuestionsButton();
+            } else {
+                endQuiz();
+            }
     })
     
     document.getElementById("answerD").addEventListener("click", function clickedD() {
         var htmlElement = document.getElementById('answerD');
         var testValue = htmlElement.innerText;
         answerCheck(testValue);
-        mainDiv.removeChild(divSecondary);
-        startQuestionsButton();
+        if (quizStart[currentIndex]) {
+            mainDiv.removeChild(divSecondary);
+            startQuestionsButton();
+            } else {
+                endQuiz();
+            }
     })
 }
 
