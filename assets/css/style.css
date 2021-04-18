@@ -80,3 +80,14 @@ section {
     align-items: ;
     margin: 5px;
 }
+
+.a-btn:hover, .b-btn:hover, .c-btn:hover, .d-btn:hover {
+    background-color: salmon;
+    border: 20px solid salmon;
+    transition: all .2s ease-in-out;
+}
+
+.answerp {
+    color: grey;
+    font-size: 18px;
+}
