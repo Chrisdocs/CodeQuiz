@@ -264,11 +264,8 @@ function startQuestionsButton() {
 
 // when each answer button is clicked, the console should return a true or fasle on whether it represents the correct answer, followed by the presentation of the next question
 document.getElementById("answerA").addEventListener("click", function clickedA() {
-    // console.log("clicked");
     var htmlElement = document.getElementById("answerA");
     var testValue = htmlElement.innerText;
-    // console.log("testValue: ", testValue);
-    // console.log("typeof: ", typeof testValue);
         answerCheck(testValue);
     if (quizStart[currentIndex]) {
             mainDiv.removeChild(divSecondary);
@@ -306,7 +303,6 @@ document.getElementById("answerC").addEventListener("click", function clickedC()
 document.getElementById("answerD").addEventListener("click", function clickedD() {
     var htmlElement = document.getElementById("answerD");
     var testValue = htmlElement.innerText;
-    // console.log(testValue);
         answerCheck(testValue);
         if (quizStart[currentIndex]) {
             mainDiv.removeChild(divSecondary);
@@ -327,13 +323,3 @@ document.getElementById("stbtn").addEventListener("click", function startQuizBut
 
 startQuestionsButton();
 });
-
-
-    
-//each question should have a time limit of 60 seconds (60,000 ms)
-
-//each new question should display a boolean value for the previous question at the bottom
-
-//once all questions have been answered, or the timer on a question reaches 0, the user is prensented with thier score
-
-//the option to input user initials should be availble alongside the highscore, and both should be stored locally
